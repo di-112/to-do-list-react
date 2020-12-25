@@ -1,11 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-const validateLength = (value) => {
-   if(value) return undefined
-   return 'This field is required'
-}
-
 const AddNode = (props) => {
    return (
       <form className='addNode' onSubmit={props.handleSubmit}>

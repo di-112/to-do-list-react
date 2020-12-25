@@ -7,7 +7,7 @@ import NodesList from './components/nodesList/nodesList';
 import Alert from './components/alert/alert';
 import AddNodeForm from './components/addNode/addNode';
 import { compose } from 'redux';
-import { Route, withRouter } from 'react-router-dom';
+import { Redirect, Route, withRouter } from 'react-router-dom';
 import Information from './components/information/Information';
 
 function App(props) {
@@ -28,7 +28,8 @@ function App(props) {
   return (
     <div className="wrapper">
       <Header/>
-      <Route path='/' exact render={()=>(
+      <Redirect to='/main'/>
+      <Route path='/main' exact render={()=>(
       <>
         {(props.alert.show) && <Alert alert={props.alert} changeAlert={props.changeAlert}/>}
         <AddNodeForm onSubmit={onSubmit} {...props}/>

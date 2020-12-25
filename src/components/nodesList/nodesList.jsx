@@ -2,7 +2,7 @@ import React from 'react'
 
 const imgBtnClose ='https://www.pngkit.com/png/full/967-9679106_wrong-environmental-defence-canada.png'
 
-const NodesList = ({nodes, removeNode, changeAlert}) => {
+const NodesList = ({nodes, removeNode}) => {
    return (
       <ul className='nodesList'> 
        {nodes.map((node, index)=> (
