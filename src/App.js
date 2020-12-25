@@ -29,14 +29,14 @@ function App(props) {
     <div className="wrapper">
       <Header/>
       <Redirect to='/main'/>
-      <Route path='/main' exact render={()=>(
+      <Route path='/main'  render={()=>(
       <>
         {(props.alert.show) && <Alert alert={props.alert} changeAlert={props.changeAlert}/>}
         <AddNodeForm onSubmit={onSubmit} {...props}/>
         <NodesList nodes={props.nodes} removeNode={props.removeNode} changeAlert={props.changeAlert}/>
       </>)} 
        />
-       <Route path='/info' exact render={()=><Information/>} />
+       <Route path='/info'  render={()=><Information/>} />
     </div>
   );
 }
