@@ -2,6 +2,7 @@
 
 
 .wrapper{
+  padding: 110px 20px 20px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,6 +17,7 @@
 @import './nodesList.scss';
 @import './addNodeForm.scss';
 @import './info.scss';
+@import './loader.scss';
 
 .element::-webkit-scrollbar {
   width: 0;

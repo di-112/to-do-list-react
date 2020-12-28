@@ -5,7 +5,7 @@ const AddNode = (props) => {
    return (
       <form className='addNode' onSubmit={props.handleSubmit}>
          <Field className='form-control' component='input' name='node' changeAlert={props.changeAlert} autoFocus/>
-         <button className='btn btn-success' type='submit'>Add Task</button>
+         <div className='addBtn'><button className='btn btn-success' type='submit'>Add Task</button></div>
       </form>
    )
 }

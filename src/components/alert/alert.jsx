@@ -1,7 +1,5 @@
 import React from 'react'
-
-const imgBtnClose ='https://www.pngkit.com/png/full/967-9679106_wrong-environmental-defence-canada.png'
-
+import { CSSTransition } from 'react-transition-group'
 
 const Alert = (props) => {
    const className = props.alert.type === 'remove'?'remove alert-danger':
@@ -16,11 +14,12 @@ const Alert = (props) => {
       default: break
    }
 
-   return (
-      <div className={'alert'+' '+className}>
-         <span> <strong>Внимание!</strong> {message} </span>
-         <button onClick={()=>{props.changeAlert({show:false, type:''})}}  type="button" class="alert__closeBtn close">&times;</button>
-      </div>
+
+   return (  
+        <div className={`alert ${className}`}> 
+            <span> <strong>Внимание!</strong> {message} </span>
+            <button onClick={() => { props.changeAlert({ show: false, type: '' }) }} type="button" class="alert__closeBtn close">&times;</button>
+         </div> 
    )
 }
 

@@ -2,15 +2,15 @@
 
 .alert{
    width: 60%;
+   min-width: 270px;
+   display: inline;
    margin:  0 auto;
    position: relative;
    padding: 30px 20px;
-   display: inline;
    text-align: center;
    border: 2px solid black;
    border-radius: 25px;
    margin-bottom: 20px;
-   animation: show 1s;
    @include adaptiv-font(17,14);
    & .alert__closeBtn{
       position: absolute;
@@ -24,11 +24,21 @@
    }
 }
 
-@keyframes show{
-   0%{
-      left: -100%;
-   }
-   100%{
-      left: 0;
-   }
-}
+// .alert-enter{
+//    opacity: 0;
+// }
+
+// .alert-enter-active{
+//    opacity: 1;
+//    transition: all 1s ease 0s;
+// }
+
+
+// .alert-exit{
+//    opacity: 1;
+// }
+
+// .alert-exit-active{
+//    opacity: 0;
+//    transition: all 1s ease 0s;
+// }

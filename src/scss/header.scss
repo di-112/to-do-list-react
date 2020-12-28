@@ -2,9 +2,12 @@
 @import './mixins.scss';
 
 .header {
-   width: 100%;
-   background: DodgerBlue;
-   margin-bottom: 20px;
+  position:  fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  background: DodgerBlue;
  }
  
  .header__content{
@@ -21,10 +24,14 @@
    width: 70px;
    border-radius: 50%;
    border: 1px solid black;
+   margin-right: 10px;
  }
  
  .menu__item{
    margin: 0 20px;
+   @media (max-width: 350px) {
+     margin: 0 10px;
+   }
    &:last-child{ margin-right: 0}
    &:first-child{ margin-left: 0}
    color: black;
