@@ -1,10 +1,8 @@
-import * as axios from 'axios'
+import API from '../API/API'
 
 const SET_NODES = 'SET_NODES'
 const CHANGE_ALERT = 'CHANGE_ALERT'
 const CHANGE_LOADIND = 'CHANGE_LOADIND'
-
-const dataBase = 'https://todolist-7b978-default-rtdb.firebaseio.com'
 
 const initialsState = {
    nodes: [],
@@ -22,7 +20,7 @@ const nodesReducer = (state=initialsState,action) => {
                ...action.nodes[key],
                id: key
             }
-         })]
+         })].reverse()
       })
       case CHANGE_ALERT: return ({
          ...state,
@@ -54,29 +52,33 @@ export const changeAlert = (alert) => (dispatch) => {
   }, 55000);
 }
 
-
 export const getNodes = () => (dispatch) => {
    dispatch(changeLoading(true))
-   axios.get(`${dataBase}/nodes.json`).then((response)=>{
+   API.getNodes().then((data)=>{
       dispatch(changeLoading(false))
-      dispatch(setNodes(response.data))
+      dispatch(setNodes(data))
    })
 }
 
 export const addNode = (node) => (dispatch) => {
-   if(!node.title)  dispatch(changeAlert({type: 'warning', show: true}))
+   if (!node.title) dispatch(changeAlert({ type: 'warning', show: true }))
    else {
       dispatch(changeLoading(true))
-      axios.post(`${dataBase}/nodes.json`, node).then((response)=>{
-      dispatch(changeAlert({type: 'add', show: true}))
-      dispatch(getNodes())
-      dispatch(changeLoading(false))
-   })}
+      API.addNode(node).then((response) => {
+         if (response.status === 200) {
+            dispatch(changeAlert({ type: 'add', show: true }))
+            dispatch(getNodes())
+            dispatch(changeLoading(false))
+         }
+      })
+   }
 }
 
 export const removeNode = (id) => (dispatch) => {
-   axios.delete(`${dataBase}/nodes/${id}.json`).then((response)=>{
-      dispatch(changeAlert({type: 'remove', show: true}))
-      dispatch(getNodes())
+   API.removeNode(id).then((response) => {
+      if (response.status === 200) {
+         dispatch(changeAlert({ type: 'remove', show: true }))
+         dispatch(getNodes())
+      }
    })
 }

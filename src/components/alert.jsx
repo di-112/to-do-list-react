@@ -1,5 +1,4 @@
 import React from 'react'
-import { CSSTransition } from 'react-transition-group'
 
 const Alert = (props) => {
    const className = props.alert.type === 'remove'?'remove alert-danger':
@@ -14,11 +13,10 @@ const Alert = (props) => {
       default: break
    }
 
-
    return (  
         <div className={`alert ${className}`}> 
             <span> <strong>Внимание!</strong> {message} </span>
-            <button onClick={() => { props.changeAlert({ show: false, type: '' }) }} type="button" class="alert__closeBtn close">&times;</button>
+            <button onClick={() => props.changeAlert({ show: false, type: '' })} type="button" class="alert__closeBtn close">&times;</button>
          </div> 
    )
 }

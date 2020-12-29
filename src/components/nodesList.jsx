@@ -9,7 +9,7 @@ const NodesList = ({nodes, removeNode}) => {
             <strong className='node__title'>{node.title}</strong> 
             <small className='node__date'>{node.date}</small> 
             </div>
-            <button onClick={()=>removeNode(node.id)}  type="button" class="node__closeBtn close">&times;</button>
+            <button onClick={()=>removeNode(node.id)}  type="button" className="node__closeBtn close">&times;</button>
          </li>))}
       </ul>
    )

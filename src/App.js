@@ -2,14 +2,14 @@ import './scss/App.scss';
 import { connect } from 'react-redux';
 import { addNode, changeAlert, getNodes, removeNode } from './redux/nodesReducer';
 import { useEffect } from 'react';
-import Header from './components/header/header';
-import NodesList from './components/nodesList/nodesList';
-import Alert from './components/alert/alert';
-import AddNodeForm from './components/addNode/addNode';
+import Header from './components/header';
+import NodesList from './components/nodesList';
+import Alert from './components/alert';
+import AddNodeForm from './components/addNode';
 import { compose } from 'redux';
 import { Redirect, Route, withRouter } from 'react-router-dom';
-import Information from './components/information/Information';
-import Loader from './components/loader/loader';
+import Information from './components/Information';
+import Loader from './components/loader';
 
 function App(props) {
   
@@ -21,29 +21,29 @@ function App(props) {
     if(props.location.pathname==='/main')props.changeAlert({show:false, type: ''})
   },[props.location.pathname])
 
-  const onClockAddNode = (formData) =>{
+  const onClickAddNode = (formData) =>{
 
-    let date = new Date()
-    let minutes = date.getMinutes();
-    let hours = date.getHours();
-    let day = date.getDate();
-    let monthIndex = date.getMonth();
-    let year = date.getFullYear();
-   
+    const date = new Date()
+    const minutes = date.getMinutes();
+    const hours = date.getHours();
+    const day = date.getDate();
+    const monthIndex = date.getMonth();
+    const year = date.getFullYear();
 
     props.addNode(
       {
-        title:formData.node,
+        title: formData.node,
         date: day + '.' + monthIndex + '.' + year + '_' + hours + ':' + minutes
       })
   }
-  if(props.isLoading){ console.log('hello') ;return (
+
+  if(props.isLoading)return (
     <div className="wrapper">
       <Header/>
       <Loader />
     </div>
-  )}
-
+  )
+  
   return (
     <div className="wrapper">
       <Header/>
@@ -51,7 +51,7 @@ function App(props) {
       <Route path='/main'  render={()=>(
         <>
           {(props.alert.show) && <Alert alert={props.alert} changeAlert={props.changeAlert}/>}
-          <AddNodeForm onSubmit={onClockAddNode} {...props}/>
+          <AddNodeForm onSubmit={onClickAddNode} {...props}/>
           <NodesList nodes={props.nodes} removeNode={props.removeNode} changeAlert={props.changeAlert}/>
         </>)} 
       />
