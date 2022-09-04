@@ -39,6 +39,4 @@ const App = () => {
   );
 }
 
-// {(alert.show) && <Alert alert={alert} changeAlert={changeAlert} />}
-
 export default App
