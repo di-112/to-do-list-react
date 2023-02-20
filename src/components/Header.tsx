@@ -8,8 +8,15 @@ import { NavLink } from 'react-router-dom';
 const headerLogo = 'https://static10.tgstat.ru/channels/_0/e2/e2db1e0464d24e6c4cbcbd17ed634d11.jpg'
 
 const Header = () => (
-  <AppBar position="static">
-    <Toolbar sx={{ backgroundColor: 'primary.dark', display: 'flex', justifyContent: 'space-between' }}>
+  <AppBar position="static" sx={{ marginBottom: 4 }}>
+    <Toolbar sx={{
+      backgroundColor: 'primary.dark',
+      display: 'flex',
+      justifyContent: 'space-between',
+      height: 52,
+      minHeight: '52px !important',
+    }}
+    >
       <IconButton
         size="large"
         edge="start"
